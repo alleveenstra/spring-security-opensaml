@@ -1,8 +1,12 @@
 Spring Security OpenSAML
 ========================
 
+**Warning: this is Beta code, do not use it on production systems**
+
 This is an Spring Security module for authentication and authorization with Security Assertion Markup Language.
 It uses the OpenSAML library from Internet2.
+
+
 
 Step 1 Create a provisioner
 ---------------------------
