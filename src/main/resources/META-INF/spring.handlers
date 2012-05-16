@@ -1,0 +1,1 @@
+http\://www.surfnet.nl/schema/security/opensaml=nl.surfnet.spring.security.opensaml.config.OpenSAMLSecurityNamespaceHandler

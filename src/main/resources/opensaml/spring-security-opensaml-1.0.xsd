@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+  xmlns="http://www.surfnet.nl/schema/security/opensaml"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  targetNamespace="http://www.surfnet.nl/schema/security/opensaml"
+  elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <xs:import
+    namespace="http://www.springframework.org/schema/beans"
+    schemaLocation="http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"/>
+
+  <xs:element name="service-provider">
+    <xs:annotation>
+      <xs:documentation>
+        Creates the OpenSAML Service Provider.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="beans:identifiedType">
+
+          <xs:attribute name="preauth-filter-ref" type="xs:string" default="samlPreAuthFilter">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="message-handler-ref" type="xs:string" default="samlMessageHandler">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="provisioner-ref" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="certificatestore-ref" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="authentication-manager-ref" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="entity-id" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="assertion-consumer-uri" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="max-parser-pool-size" type="xs:int" default="2">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="replay-cache-life-in-millis" type="xs:int" default="14400000">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="issue-instant-check-clock-skew-in-secs" type="xs:int" default="90">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+          <xs:attribute name="issue-instant-check-valid-time-in-secs" type="xs:int" default="300">
+            <xs:annotation>
+              <xs:documentation>
+                Write me!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
