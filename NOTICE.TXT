@@ -1,4 +1,4 @@
-Spring Security Opensaml
+Spring Security OpenSAML
 Copyright 2012 SURFnet bv, The Netherlands
 
 Portions of this software were developed at SURFnet, as part of the SURFworks
