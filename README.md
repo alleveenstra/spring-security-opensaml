@@ -1,13 +1,11 @@
-Spring Security OpenSAML
-========================
+# Spring Security OpenSAML
 
 **Warning: this is Beta code, do not use it on production systems**
 
 This is an Spring Security module for authentication and authorization with Security Assertion Markup Language.
 It uses the OpenSAML library from Internet2.
 
-Step 1 Create a provisioner
----------------------------
+## Step 1 Create a provisioner
 
 When a user logs in, your application can create or update it's existing profile.
 Create a class that implements the *nl.surfnet.spring.security.opensaml.Provisioner* interface.
@@ -20,8 +18,7 @@ Next, create a bean of the class in your Spring conext.
 </bean>
 ```
 
-Step 2 Add the certificates of your IDP
----------------------------------------
+## Step 2 Add the certificates of your IDP
 
 ```xml
 <bean id="samlCertificateStore" class="nl.surfnet.spring.security.opensaml.CertificateStoreImpl">
@@ -34,8 +31,7 @@ Step 2 Add the certificates of your IDP
 </bean>
 ```
 
-Step 3 Create a service provider
---------------------------------
+## Step 3 Create a service provider
 
 ```xml
 <opensaml:service-provider id="samlAuthenticationProvider"
@@ -48,15 +44,13 @@ Step 3 Create a service provider
                          authentication-manager-ref="authenticationManager" />
 ```
 
-Step 4 Add the pre-auth filter
-------------------------------
+## Step 4 Add the pre-auth filter
 
 ```xml
 <security:custom-filter position="PRE_AUTH_FILTER" ref="samlPreAuthFilter" />
 ```
 
-Step 5 Set the authentication provider
---------------------------------------
+## Step 5 Set the authentication provider
 
 ```xml
 <security:authentication-manager alias="authenticationManager">
@@ -64,8 +58,7 @@ Step 5 Set the authentication provider
 </security:authentication-manager>
 ```
 
-Step 6 Add an AuthN request controller
---------------------------------------
+## Step 6 Add an AuthN request controller
 
 ```xml
 <bean id="authnRequestController" class="nl.surfnet.spring.security.opensaml.controller.AuthnRequestController">
@@ -74,3 +67,26 @@ Step 6 Add an AuthN request controller
   <property name="entityID" value="${ISSUING_ENTITY_ID}"/>
 </bean>
 ```
+
+## Step 7 Create either a redirect or a WAYF page
+
+When your application requires a user is logged in you can redirect it to the AuthN request controller.
+
+When you connect with multiple identity providers, you can show a *Where Are You From* (WAYF) page.
+For example, consider the following snippet?
+
+```html
+<a href="OpenSAML.sso/Login?target=https://engine.dev.surfconext.nl/authentication/idp/single-sign-on">
+    <button class="btn btn-primary">Login at surfconext</button>
+</a>
+
+<a href="OpenSAML.sso/Login?target=https://openidp.feide.no/simplesaml/saml2/idp/SSOService.php">
+    <button class="btn btn-primary">Login at feido.no</button>
+</a>
+
+<a href="OpenSAML.sso/Login?target=https://mujina-idp.dev.surfconext.nl/SingleSignOnService">
+    <button class="btn btn-primary">Login at Mujina</button>
+</a>
+```
+
+
