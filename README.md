@@ -3,7 +3,7 @@
 **Warning: this is Beta code, do not use it on production systems**
 
 This is an Spring Security module for authentication and authorization with Security Assertion Markup Language.
-It uses the OpenSAML library from Internet2.
+It uses the [OpenSAML library](http://www.opensaml.org/) from Internet2.
 
 ## Step 1 Create a provisioner
 
@@ -44,10 +44,15 @@ Next, create a bean of the class in your Spring conext.
                          authentication-manager-ref="authenticationManager" />
 ```
 
-## Step 4 Add the pre-auth filter
+## Step 4 Add security filter chain configuration
+
+Within `&lt;security:http&gt;` add the following configuration
 
 ```xml
 <security:custom-filter position="PRE_AUTH_FILTER" ref="samlPreAuthFilter" />
+<security:intercept-url pattern="/OpenSAML.sso/Login" access="permitAll"/>
+<security:intercept-url pattern="${ASSERTION_CONSUMER_URI}"
+                         access="hasAnyRole(ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER)"/>
 ```
 
 ## Step 5 Set the authentication provider
@@ -72,20 +77,32 @@ Next, create a bean of the class in your Spring conext.
 
 When your application requires a user is logged in you can redirect it to the AuthN request controller.
 
+For a single identity provider add the following rule in the security filter chain:
+
+```xml
+<security:form-login login-page="/OpenSAML.sso/Login?target=https://engine.dev.surfconext.nl/authentication/idp/single-sign-on" default-target-url="/" />
+```
+
 When you connect with multiple identity providers, you can show a *Where Are You From* (WAYF) page.
-For example, consider the following snippet?
+
+```xml
+<security:intercept-url pattern="/myloginpage.jsp" access="permitAll"/>
+<security:form-login login-page="/myloginpage.jsp" default-target-url="/" />
+```
+
+Example of myloginpage.jsp:
 
 ```html
 <a href="OpenSAML.sso/Login?target=https://engine.dev.surfconext.nl/authentication/idp/single-sign-on">
-    <button class="btn btn-primary">Login at surfconext</button>
+    Login at surfconext
 </a>
 
 <a href="OpenSAML.sso/Login?target=https://openidp.feide.no/simplesaml/saml2/idp/SSOService.php">
-    <button class="btn btn-primary">Login at feido.no</button>
+    Login at feido.no
 </a>
 
 <a href="OpenSAML.sso/Login?target=https://mujina-idp.dev.surfconext.nl/SingleSignOnService">
-    <button class="btn btn-primary">Login at Mujina</button>
+    Login at Mujina
 </a>
 ```
 

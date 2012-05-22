@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+  xmlns="http://www.surfnet.nl/schema/security/opensaml"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  targetNamespace="http://www.surfnet.nl/schema/security/opensaml"
+  elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <xsd:import
+    namespace="http://www.springframework.org/schema/beans"
+    schemaLocation="http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"/>
+
+  <xsd:element name="service-provider">
+    <xsd:annotation>
+      <xsd:documentation>
+        Creates the OpenSAML Service Provider.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="beans:identifiedType">
+
+          <xsd:attribute name="preauth-filter-ref" type="xsd:string" default="samlPreAuthFilter">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+          <xsd:attribute name="message-handler-ref" type="xsd:string" default="samlMessageHandler">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+          <xsd:attribute name="provisioner-ref" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+          <xsd:attribute name="certificatestore-ref" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+          <xsd:attribute name="authentication-manager-ref" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+          <xsd:attribute name="entity-id" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+          <xsd:attribute name="assertion-consumer-uri" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+          <xsd:attribute name="max-parser-pool-size" type="xsd:int" default="2">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+          <xsd:attribute name="replay-cache-life-in-millis" type="xsd:int" default="14400000">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+          <xsd:attribute name="issue-instant-check-clock-skew-in-secs" type="xsd:int" default="90">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+          <xsd:attribute name="issue-instant-check-valid-time-in-secs" type="xsd:int" default="300">
+            <xsd:annotation>
+              <xsd:documentation>
+                Write me!
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>
