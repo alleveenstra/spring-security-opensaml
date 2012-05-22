@@ -46,7 +46,7 @@ Next, create a bean of the class in your Spring conext.
 
 ## Step 4 Add security filter chain configuration
 
-Within `&lt;security:http&gt;` add the following configuration
+Within `<security:http>` add the following configuration
 
 ```xml
 <security:custom-filter position="PRE_AUTH_FILTER" ref="samlPreAuthFilter" />
